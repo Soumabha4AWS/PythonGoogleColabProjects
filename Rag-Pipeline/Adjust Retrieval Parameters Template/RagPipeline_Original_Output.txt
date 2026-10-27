@@ -1,0 +1,125 @@
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you can refer to the resolution provided in Ticket ID: TICK-001. The issue was caused by an updated password hash algorithm while the session tokens remained active, leading to 'Invalid credentials' errors for users.
+
+**Resolution Steps:**
+1. Clear all active sessions for affected users.
+2. Force re-authentication for those users.
+3. Implement automatic session cleanup on password changes to prevent future occurrences.
+
+By following these steps, you should be able to resolve the authentication failures after a password reset.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts can be caused by issues related to the connection pool being either too small or too large for the application's peak load. 
+
+1. **Ticket ID: TICK-002** - In this case, the database connection pool was sized too small, leading to 'connection pool exhausted' errors and timeouts during peak hours. The resolution involved increasing the maximum connections from 20 to 100 and optimizing long-running queries that were holding connections.
+
+2. **Ticket ID: TICK-021** - Conversely, this ticket indicated that the connection pool was sized too large, which also resulted in similar errors. The resolution included decreasing the minimum connections from 20 to 10 and terminating non-running queries that were holding connections.
+
+Both scenarios highlight the importance of properly sizing the database connection pool to match the application's load and managing long-running queries effectively.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered due to the sending IP being blacklisted by the email service provider because of spam complaints. This issue was documented in Ticket ID: TICK-006, where users reported not receiving password reset and confirmation emails despite SMTP server logs indicating successful sends. The resolution involved implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address with a proper warmup process, and adding email deliverability monitoring.
+
+Additionally, there was another issue in Ticket ID: TICK-022 where users were unable to register with their email because the email was already registered. To resolve this, users needed to delete their existing account before re-registering. 
+
+These two tickets highlight different aspects of email delivery issues.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+I don't have enough information in the ticket history to answer that question.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018

@@ -1,0 +1,213 @@
+**Task**: Change the number of retrieved documents and search type.
+
+**In demo.py, find the retriever setup (around line 120) and try:**
+
+```python
+# Change k from 3 to different values
+retriever = vector_store.as_retriever(search_kwargs={"k": 10})   # Maximum context
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 10 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+  [4] TICK-006: Email notifications not being delivered
+
+  [5] TICK-014: Session timeout too short
+
+  [6] TICK-022: Email notifications not being already registered
+
+  [7] TICK-020: Cannot delete user accounts
+
+  [8] TICK-003: Payment processing fails for international cards
+
+  [9] TICK-009: API rate limiting too aggressive
+
+  [10] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you can refer to Ticket ID: TICK-001. The issue was caused by an update to the password hash algorithm, which resulted in session tokens not being invalidated. 
+
+**Resolution Steps:**
+1. Clear all active sessions for affected users.
+2. Force re-authentication for those users.
+3. Implement automatic session cleanup on password change to prevent future occurrences.
+
+This approach should resolve the authentication failures related to password resets.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+4. Ticket TICK-006
+5. Ticket TICK-014
+6. Ticket TICK-022
+7. Ticket TICK-020
+8. Ticket TICK-003
+9. Ticket TICK-009
+10. Ticket TICK-013
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 10 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+  [4] TICK-014: Session timeout too short
+
+  [5] TICK-017: Real-time notifications delayed by several minutes
+
+  [6] TICK-013: Webhook deliveries failing intermittently
+
+  [7] TICK-018: API returning inconsistent data
+
+  [8] TICK-016: Two-factor authentication codes not working
+
+  [9] TICK-005: Memory leak in background worker process
+
+  [10] TICK-009: API rate limiting too aggressive
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts can be caused by the connection pool being either too small or too large for the application's peak load. 
+
+1. **Ticket ID: TICK-002** - In this case, the database connection pool was sized too small, leading to 'connection pool exhausted' errors and timeouts during peak hours. The resolution involved increasing the maximum connections from 20 to 100 and optimizing long-running queries that were holding connections.
+
+2. **Ticket ID: TICK-021** - Conversely, this ticket indicated that the connection pool was sized too large, which also resulted in similar errors. The resolution involved decreasing the minimum connections from 20 to 10 and terminating non-running queries that were holding connections.
+
+Both scenarios highlight the importance of properly sizing the database connection pool to match the application's load and optimizing queries to prevent connection exhaustion.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+4. Ticket TICK-014
+5. Ticket TICK-017
+6. Ticket TICK-013
+7. Ticket TICK-018
+8. Ticket TICK-016
+9. Ticket TICK-005
+10. Ticket TICK-009
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 10 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+  [4] TICK-012: Scheduled reports not generating
+
+  [5] TICK-017: Real-time notifications delayed by several minutes
+
+  [6] TICK-016: Two-factor authentication codes not working
+
+  [7] TICK-003: Payment processing fails for international cards
+
+  [8] TICK-019: Image thumbnails not generating
+
+  [9] TICK-008: File uploads failing for large files
+
+  [10] TICK-007: Search functionality returns no results
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered due to the sending IP being blacklisted by the email service provider because of spam complaints. This issue was documented in Ticket ID: TICK-006, where users reported not receiving password reset and confirmation emails despite SMTP server logs indicating successful sends. The resolution involved implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address with a proper warmup process, and adding email deliverability monitoring.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+4. Ticket TICK-012
+5. Ticket TICK-017
+6. Ticket TICK-016
+7. Ticket TICK-003
+8. Ticket TICK-019
+9. Ticket TICK-008
+10. Ticket TICK-007
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 10 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+  [4] TICK-015: Export to CSV producing corrupt files
+
+  [5] TICK-002: Database connection timeout in production
+
+  [6] TICK-009: API rate limiting too aggressive
+
+  [7] TICK-021: Database connection excedding in production
+
+  [8] TICK-013: Webhook deliveries failing intermittently
+
+  [9] TICK-003: Payment processing fails for international cards
+
+  [10] TICK-007: Search functionality returns no results
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+I don't have enough information in the ticket history to answer that question.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018
+4. Ticket TICK-015
+5. Ticket TICK-002
+6. Ticket TICK-009
+7. Ticket TICK-021
+8. Ticket TICK-013
+9. Ticket TICK-003
+10. Ticket TICK-007

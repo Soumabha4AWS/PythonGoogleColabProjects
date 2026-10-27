@@ -1,0 +1,127 @@
+**Modify the prompt to require citations:**
+```python
+citation_prompt = """Answer the question using the context. Include inline citations [TICK-XXX] after each fact.
+
+Example format:
+"Database connection timeouts occur when the pool is undersized [TICK-002]. Increase max_connections [TICK-002]."
+
+Context:
+{context}
+
+Question: {question}
+
+Answer with inline citations:"""
+
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you need to address the issue of session tokens not being invalidated after the password hash algorithm was updated. The solution involves clearing all active sessions and forcing re-authentication for users who have reset their passwords. Additionally, implementing automatic session cleanup on password change will help prevent similar issues in the future [TICK-001].
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts are caused by an undersized connection pool, which leads to the pool being exhausted and results in errors such as 'timeout waiting for connection' [TICK-002]. This situation typically occurs during peak load times when the number of requests exceeds the available connections [TICK-002].
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered because the email service provider had blacklisted the sending IP due to spam complaints. Although the SMTP server logs show successful sends, the emails never arrive in the inbox or spam folder [TICK-006]. To resolve this issue, SPF, DKIM, and DMARC records were implemented, and the sending IP was switched to a dedicated address with a proper warmup process [TICK-006].
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To make the perfect pizza, start with a high-quality dough that has been properly kneaded and allowed to rise. Use a mix of bread flour and all-purpose flour for the best texture [TICK-001]. Next, prepare a flavorful tomato sauce using crushed tomatoes, garlic, and fresh herbs like basil and oregano [TICK-002]. 
+
+When it comes to cheese, opt for fresh mozzarella for its meltability and flavor, and consider adding a sprinkle of Parmesan for extra depth [TICK-003]. For toppings, balance is key; use a variety of vegetables, meats, and herbs, but avoid overloading the pizza to ensure even cooking [TICK-004]. 
+
+Preheat your oven to the highest temperature possible, ideally around 500°F (260°C), and use a pizza stone if available to achieve a crispy crust [TICK-005]. Bake the pizza for about 10-12 minutes, keeping an eye on it to prevent burning [TICK-006]. Finally, let it cool for a couple of minutes before slicing to allow the cheese to set slightly [TICK-007]. Enjoy your homemade pizza!
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018

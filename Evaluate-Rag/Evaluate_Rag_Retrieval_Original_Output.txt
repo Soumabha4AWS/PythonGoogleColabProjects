@@ -1,0 +1,41 @@
+
+Evaluating retrieval for all queries...
+
+✓ Completed retrieval evaluation for 15 queries
+
+
+
+--------------------------------------------------------------------------------
+RETRIEVAL METRICS (Averaged across all queries)
+--------------------------------------------------------------------------------
+
+Precision@3: 0.5333
+  → What % of retrieved documents are actually relevant?
+  → Target: > 0.80 for production
+
+Recall@3:    0.8667
+  → What % of all relevant documents did we find?
+  → Target: > 0.70 for production
+
+F1 Score@3:  0.6400
+  → Balanced measure of retrieval quality
+  → Target: > 0.75 for production
+
+--------------------------------------------------------------------------------
+PER-QUERY RETRIEVAL RESULTS (Sample)
+--------------------------------------------------------------------------------
+
+Q1: How do I fix authentication failures after password reset?...
+  Relevant:  ['TICK-001', 'TICK-011', 'TICK-014']
+  Retrieved: ['TICK-001', 'TICK-016', 'TICK-011']
+  Precision: 0.67 | Recall: 0.67 | F1: 0.67
+
+Q2: What causes database connection timeout errors?...
+  Relevant:  ['TICK-002', 'TICK-010']
+  Retrieved: ['TICK-002', 'TICK-021', 'TICK-014']
+  Precision: 0.33 | Recall: 0.50 | F1: 0.40
+
+Q3: Why do international credit card payments fail?...
+  Relevant:  ['TICK-003']
+  Retrieved: ['TICK-003', 'TICK-016', 'TICK-013']
+  Precision: 0.33 | Recall: 1.00 | F1: 0.50

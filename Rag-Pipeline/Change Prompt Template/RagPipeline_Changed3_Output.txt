@@ -1,0 +1,130 @@
+**Version C: Bullet point format**
+```python
+template = """Answer using only the context. Format as bullet points with ticket citations.
+
+Context: {context}
+
+Question: {question}
+
+Answer (bullet points with sources):"""
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+- **Clear all active sessions** to ensure users are required to re-authenticate. (Ticket ID: TICK-001)
+- **Force re-authentication** for users who have recently reset their passwords. (Ticket ID: TICK-001)
+- **Implement automatic session cleanup** on password change to prevent future issues. (Ticket ID: TICK-001)
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+- **Connection Pool Exhaustion**: The application experiences intermittent 500 errors due to the connection pool being exhausted, leading to timeouts while waiting for connections. (Ticket ID: TICK-002)
+- **Insufficient Connection Pool Size**: In TICK-002, the database connection pool was initially sized too small for peak load, causing timeouts. (Ticket ID: TICK-002)
+- **Long-Running Queries**: Queries that take too long to execute can hold connections longer than necessary, contributing to connection pool exhaustion. (Ticket ID: TICK-002)
+- **Excessive Connections**: In TICK-021, the connection pool was sized too large, which can also lead to inefficiencies and potential timeouts if not managed properly. (Ticket ID: TICK-021)
+- **Monitoring and Alerts**: Lack of monitoring can prevent timely identification of issues related to connection pool usage, leading to undetected timeouts. (Ticket ID: TICK-002, TICK-021)
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+- Emails are not being delivered due to the email service provider blacklisting the sending IP because of spam complaints. (Ticket ID: TICK-006)
+- Users are also experiencing issues with email registration because the email used for registration is already registered, requiring account deletion for re-registration. (Ticket ID: TICK-022)
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+- **Dough Preparation**: Start with high-quality flour, water, yeast, and salt. Knead until smooth and let it rise (TICK-008).
+- **Sauce**: Use fresh tomatoes, garlic, and herbs for a flavorful sauce (TICK-010).
+- **Cheese**: Opt for a blend of mozzarella and provolone for the best melt and flavor (TICK-018).
+- **Toppings**: Choose fresh vegetables, meats, and herbs to enhance taste (TICK-010).
+- **Baking**: Preheat your oven to the highest temperature, ideally using a pizza stone for a crispy crust (TICK-008).
+- **Serving**: Let the pizza cool slightly before slicing to maintain structure (TICK-018).
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018

@@ -1,0 +1,135 @@
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+**Version B: Step-by-step reasoning**
+```python
+template = """You are a support assistant. Answer using ONLY the context below.
+
+Context: {context}
+
+Question: {question}
+
+Think step by step:
+1. What tickets are relevant?
+2. What information do they contain?
+3. How does this answer the question?
+
+Answer:"""
+
+
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+1. The relevant ticket is TICK-001.
+2. It contains information about multiple users experiencing authentication failures after performing a password reset, with the error message 'Invalid credentials'. The issue started after a recent security patch deployment. The resolution involved clearing all active sessions and forcing re-authentication, as well as implementing automatic session cleanup on password change.
+3. This answers the question by providing a clear solution: clear all active sessions and force users to re-authenticate after a password reset, along with ensuring that automatic session cleanup is in place for future password changes.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+1. The relevant tickets are TICK-002 and TICK-021, as both address issues related to database connection timeouts.
+
+2. 
+   - TICK-002 describes a situation where the application experiences intermittent 500 errors due to the connection pool being exhausted and timeouts waiting for connections. The resolution involved increasing the maximum connections in the database connection pool and optimizing long-running queries.
+   - TICK-021 also describes intermittent 500 errors with similar logs indicating connection pool exhaustion and timeouts. However, in this case, the resolution involved decreasing the minimum connections in the pool and terminating non-running queries that were holding connections.
+
+3. Both tickets indicate that database connection timeouts can occur due to the connection pool being either too small or too large for the peak load, leading to exhausted connections. Additionally, long-running queries or non-running queries holding connections can contribute to these timeouts. Thus, the causes of database connection timeouts include inadequate sizing of the connection pool and inefficient query handling.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+1. The relevant ticket is TICK-006.
+2. TICK-006 contains information that users are not receiving password reset and confirmation emails, despite SMTP server logs showing successful sends. The resolution indicates that the email service provider had blacklisted the sending IP due to spam complaints, and measures such as implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address, and adding email deliverability monitoring were taken to resolve the issue.
+3. This information answers the question by explaining that the emails are not being delivered because the sending IP was blacklisted, which prevented the emails from reaching users' inboxes or spam folders.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+The context provided does not contain any information related to making pizza. Therefore, I cannot answer the question about how to make the perfect pizza based on the given tickets.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018

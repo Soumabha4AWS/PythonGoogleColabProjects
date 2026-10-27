@@ -1,0 +1,102 @@
+**Task**: Change the number of retrieved documents and search type.
+
+**In demo.py, find the retriever setup (around line 120) and try:**
+
+```python
+# Change k from 3 to different values
+retriever = vector_store.as_retriever(search_kwargs={"k": 1})   # Very focused
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 1 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you can refer to the resolution from Ticket ID: TICK-001. The issue was caused by an updated password hash algorithm while the session tokens remained active, leading to 'Invalid credentials' errors for users.
+
+The solution implemented was to clear all active sessions and force re-authentication. Additionally, an automatic session cleanup was set up to occur whenever a password is changed. 
+
+Following these steps should help resolve similar authentication issues after a password reset.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 1 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts can be caused by several factors, as indicated in the support ticket history. One specific issue noted in Ticket ID: TICK-002 involved an application experiencing intermittent 500 errors due to a 'connection pool exhausted' message and 'timeout waiting for connection'. This was attributed to the database connection pool being sized too small for the peak load, which resulted in connection timeouts affecting approximately 20% of requests during peak hours.
+
+To resolve this issue, the max_connections parameter was increased from 20 to 100, and connection pooling monitoring and alerts were added. Additionally, long-running queries that were holding connections were optimized.
+
+In summary, common causes of database connection timeouts include:
+1. Insufficient connection pool size for peak load (as seen in TICK-002).
+2. Long-running queries that hold connections longer than necessary.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 1 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered because the email service provider had blacklisted the sending IP due to spam complaints. This issue was documented in Ticket ID: TICK-006. The resolution involved implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address with a proper warmup process, and adding email deliverability monitoring.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 1 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+I don't have enough information in the ticket history to answer that question.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008

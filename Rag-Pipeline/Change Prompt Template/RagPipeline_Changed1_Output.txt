@@ -1,0 +1,118 @@
+**Version A: More concise**
+```python
+template = """Answer the question using only the ticket context below. Cite ticket IDs.
+
+Context: {context}
+
+Question: {question}
+
+Answer:"""
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-016: Two-factor authentication codes not working
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you should clear all active sessions and force re-authentication. This issue may occur if the password hash algorithm has been updated but the session tokens have not been invalidated. Implementing automatic session cleanup on password change can also help prevent this issue in the future. This resolution is based on Ticket ID: TICK-001.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-016
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-021: Database connection excedding in production
+
+  [3] TICK-010: Dashboard loading extremely slowly
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts can be caused by an exhausted connection pool, as indicated in both TICK-002 and TICK-021. In TICK-002, the issue was due to the connection pool being sized too small for peak load, leading to 'connection pool exhausted' errors. In TICK-021, the problem arose from the connection pool being sized too large, which also resulted in similar errors. Both tickets highlight that long-running queries can hold connections and contribute to timeouts.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-021
+3. Ticket TICK-010
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-022: Email notifications not being already registered
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered because the email service provider had blacklisted the sending IP due to spam complaints. This issue was addressed by implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address with a proper warmup process, and adding email deliverability monitoring (Ticket ID: TICK-006).
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-022
+3. Ticket TICK-013
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-010: Dashboard loading extremely slowly
+
+  [3] TICK-018: API returning inconsistent data
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+I'm sorry, but I can only provide information based on the ticket context provided. If you have questions related to the tickets, feel free to ask!
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-010
+3. Ticket TICK-018

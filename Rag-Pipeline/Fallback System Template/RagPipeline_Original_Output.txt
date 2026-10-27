@@ -1,0 +1,27 @@
+ 
+================================================================================
+PART 7: Enhanced RAG with Answer Validation
+================================================================================
+
+Testing validation logic:
+
+1. Relevant query (should answer):
+
+Query: How to fix database connection timeouts?
+
+Relevance scores (cosine similarity: 0=no match, 1=identical):
+  - TICK-002: 0.5743
+  - TICK-021: 0.5683
+  - TICK-010: 0.4087
+
+2. Irrelevant query (should refuse):
+
+Query: What is the capital of France?
+
+Relevance scores (cosine similarity: 0=no match, 1=identical):
+  - TICK-003: 0.0284
+  - TICK-015: 0.0164
+  - TICK-016: 0.0146
+
+⚠ Best match relevance (0.0284) is below threshold (0.5) — too dissimilar to answer confidently
+'I don't have enough relevant information in the ticket history to answer that question confidently.'

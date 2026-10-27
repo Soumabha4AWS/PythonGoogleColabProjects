@@ -1,0 +1,127 @@
+**Task**: Change the number of retrieved documents and search type.
+
+**In demo.py, find the retriever setup (around line 120) and try:**
+
+# Try MMR for diverse results
+retriever = vector_store.as_retriever(
+    search_type="mmr",
+    search_kwargs={"k": 3, "fetch_k": 10}
+)
+```
+
+
+
+================================================================================
+PART 6: Testing the RAG System
+================================================================================
+
+================================================================================
+QUERY: How do I fix authentication failures after password reset?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-001: Users unable to log in after password reset
+
+  [2] TICK-011: SSO authentication broken after upgrade
+
+  [3] TICK-006: Email notifications not being delivered
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+To fix authentication failures after a password reset, you can refer to the resolution provided in Ticket ID: TICK-001. The issue was caused by an updated password hash algorithm while the session tokens remained active, leading to 'Invalid credentials' errors for users.
+
+**Resolution Steps:**
+1. Clear all active sessions for users who have recently reset their passwords.
+2. Force re-authentication for these users.
+3. Implement automatic session cleanup on password changes to prevent similar issues in the future.
+
+By following these steps, you should be able to resolve the authentication failures after a password reset.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-001
+2. Ticket TICK-011
+3. Ticket TICK-006
+
+================================================================================
+QUERY: What causes database connection timeouts?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-002: Database connection timeout in production
+
+  [2] TICK-014: Session timeout too short
+
+  [3] TICK-013: Webhook deliveries failing intermittently
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Database connection timeouts can be caused by an exhausted connection pool, which occurs when the number of active connections reaches the maximum limit set for the database. In the case of Ticket ID TICK-002, the application experienced intermittent 500 errors due to the connection pool being sized too small for peak load, leading to messages like 'connection pool exhausted' and 'timeout waiting for connection'. The resolution involved increasing the maximum connections from 20 to 100 and optimizing long-running queries that were holding connections.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-002
+2. Ticket TICK-014
+3. Ticket TICK-013
+
+================================================================================
+QUERY: Why are emails not being delivered?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-006: Email notifications not being delivered
+
+  [2] TICK-013: Webhook deliveries failing intermittently
+
+  [3] TICK-012: Scheduled reports not generating
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+Emails are not being delivered due to the sending IP being blacklisted by the email service provider because of spam complaints. This issue was documented in Ticket ID: TICK-006. The resolution involved implementing SPF, DKIM, and DMARC records, switching to a dedicated IP address with a proper warmup process, and adding email deliverability monitoring to ensure successful delivery in the future.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-006
+2. Ticket TICK-013
+3. Ticket TICK-012
+
+================================================================================
+QUERY: How do I make the perfect pizza?
+================================================================================
+
+Retrieved 3 relevant tickets:
+
+  [1] TICK-008: File uploads failing for large files
+
+  [2] TICK-018: API returning inconsistent data
+
+  [3] TICK-007: Search functionality returns no results
+
+Generating answer...
+
+--------------------------------------------------------------------------------
+ANSWER:
+--------------------------------------------------------------------------------
+I don't have enough information in the ticket history to answer that question.
+
+--------------------------------------------------------------------------------
+SOURCE DOCUMENTS:
+--------------------------------------------------------------------------------
+1. Ticket TICK-008
+2. Ticket TICK-018
+3. Ticket TICK-007

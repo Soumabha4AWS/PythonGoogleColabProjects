@@ -1,0 +1,90 @@
+
+Testing validation logic:
+
+================================================================================
+
+1 How to fix database connection timeouts?
+
+--------------------------------------------------------------------------------
+Found possibly relevant ticket (TICK-002), but confidence is high.
+
+. Relevant query with High confidence (should answer): 
+To fix database connection timeouts, you can refer to the following relevant tickets:
+
+1. **Ticket ID: TICK-002**
+   - **Issue**: The application experienced intermittent 500 errors due to 'connection pool exhausted' and 'timeout waiting for connection', affecting about 20% of requests during peak hours.
+   - **Resolution**: The database connection pool was sized too small for peak load. The solution involved increasing the `max_connections` from 20 to 100, adding connection pooling monitoring and alerts, and optimizing long-running queries that were holding connections.
+
+2. **Ticket ID: TICK-021**
+   - **Issue**: Similar to TICK-002, this ticket also reported intermittent 500 errors with 'connection pool exhausted' and 'timeout waiting for connection'.
+   - **Resolution**: In this case, the database connection pool was sized too big for peak load. The resolution included decreasing the `min_connections` from 20 to 10, adding connection pooling monitoring and alerts, and terminating not-running queries that were holding connections.
+
+Based on these tickets, you should consider adjusting the size of your database connection pool, either by increasing the maximum connections if it's too small or decreasing the minimum connections if it's too large. Additionally, implementing monitoring and optimizing long-running queries can help mitigate connection timeouts.
+
+================================================================================
+
+2 How to fix authentication problems?
+
+--------------------------------------------------------------------------------
+Found possibly relevant ticket (TICK-001), but confidence is moderate.
+
+. Relevant query with Medium confidence (should answer):
+To address authentication problems, here are some relevant issues and their resolutions from the ticket history:
+
+1. **Users unable to log in after password reset (Ticket ID: TICK-001)**:
+   - **Problem**: Multiple users reported authentication failures with the error message 'Invalid credentials' after performing a password reset. This issue arose following a recent security patch deployment.
+   - **Resolution**: The password hash algorithm was updated, but session tokens were not invalidated. The solution involved clearing all active sessions and forcing re-authentication. Additionally, automatic session cleanup was implemented on password changes.
+
+2. **Two-factor authentication codes not working (Ticket ID: TICK-016)**:
+   - **Problem**: Users were unable to log in using TOTP codes from authenticator apps, with codes being marked as invalid even when entered immediately after generation. This affected a random subset of users.
+   - **Resolution**: The issue was traced to server time drifting by 2 minutes due to misconfigured NTP, which caused TOTP codes to fall outside the acceptance window. The resolution included configuring NTP synchronization, verifying time accuracy, adding time drift monitoring, and increasing the TOTP acceptance window to ±1 time step.
+
+3. **SSO authentication broken after upgrade (Ticket ID: TICK-011)**:
+   - **Problem**: The Single Sign-On integration with the corporate SAML provider was failing, resulting in users receiving an 'Invalid SAML response' error after being redirected back from the SSO portal. This issue began after a version upgrade.
+   - **Resolution**: The upgrade changed the default SAML signature algorithm from SHA-1 to SHA-256, which required an update to the IdP configuration. Coordination with the IT team was necessary to update the IdP settings, and a configuration option was added to specify the signature algorithm.
+
+These tickets highlight common authentication issues and their resolutions, which can guide troubleshooting efforts.
+
+================================================================================
+
+3 How to fix system performance problems?
+
+--------------------------------------------------------------------------------
+Found possibly relevant ticket (TICK-010), but confidence is moderate.
+
+. Irrelevant query with Low confidence (should refuse): 
+To address system performance problems, you can refer to the following relevant issues and their resolutions from the ticket history:
+
+1. **Dashboard Loading Extremely Slowly (Ticket ID: TICK-010)**:
+   - **Problem**: The admin dashboard was taking over 30 seconds to load due to multiple slow database queries, causing the page to become unresponsive for all users with admin privileges.
+   - **Resolution**: The issue was resolved by optimizing the queries to eliminate N+1 queries for user statistics. This included implementing JOIN statements and adding database indexes on frequently queried columns. Additionally, Redis caching was introduced for aggregate statistics with a 5-minute TTL, which reduced the load time to under 2 seconds.
+
+2. **Memory Leak in Background Worker Process (Ticket ID: TICK-005)**:
+   - **Problem**: A background job processor was experiencing a steady increase in memory usage, leading to the process being killed by the OS after reaching 8GB of memory.
+   - **Resolution**: Memory profiling identified unclosed database cursors in the batch processing loop. The solution involved adding explicit `cursor.close()` calls and implementing context managers for all database operations, resulting in stable memory usage at 500MB and the setup of memory usage monitoring alerts.
+
+3. **Database Connection Timeout in Production (Ticket ID: TICK-002)**:
+   - **Problem**: The application faced intermittent 500 errors due to 'connection pool exhausted' and 'timeout waiting for connection', affecting about 20% of requests during peak hours.
+   - **Resolution**: The database connection pool was resized from 20 to 100 max connections to accommodate peak load. Connection pooling monitoring and alerts were added, and long-running queries were optimized to prevent them from holding connections.
+
+These tickets highlight various performance issues and their resolutions, which can guide you in troubleshooting similar problems in your system.
+
+================================================================================
+
+4 What is the capital of France?
+
+--------------------------------------------------------------------------------
+Found possibly relevant ticket (TICK-003), but confidence is moderate.
+
+. Irrelevant query (should refuse): 
+I don't have enough information in the ticket history to answer that question.
+
+================================================================================
+
+5 how to bake cookies?
+
+--------------------------------------------------------------------------------
+Found possibly relevant ticket (TICK-022), but confidence is moderate.
+
+. Irrelevant query (should refuse): 
+I don't have enough information in the ticket history to answer that question.
